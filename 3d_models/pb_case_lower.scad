@@ -16,11 +16,11 @@ board_x = 121.0;
 pad_size = 9.0;
 pad_off_xy = 0.3;
 mount_height = 4.5;
-mount_dist_x = 111.3;
-mount_dist_y = 60.4;
+mount_dist_x = 111.4;
+mount_dist_y = 60.3;
 wall_thick = 1.6;
 corner_r = 1.0;
-bw_gap = 1.5; // gap from edge of board to a case wall
+bw_gap = 2.5; // gap from edge of board to a case wall
 extra_y_gap = 1.0;
 width = board_x + bw_gap*2 + wall_thick*2;
 depth = board_y + bw_gap*2 + extra_y_gap*2 + wall_thick*2;
@@ -32,7 +32,7 @@ pad_x = pad_size*0.5+pad_off_xy+bw_gap+wall_thick;
 pad_y = pad_size*0.5+pad_off_xy+bw_gap+extra_y_gap+wall_thick;
 gc_of_win_len = 7.0;      // length of window
 // on/off switch window start vvv
-gc_on_off_win_x = 94.0 + pad_x; 
+gc_on_off_win_x = 95.0 + pad_x; 
 gc_of_win_h = 5.0;        // height of window
 geiger_beeper_d = 17.0;
 gb_x = pad_x + 19.0;
@@ -52,6 +52,7 @@ usbc_d = 3.8;
 usbc_w = 9.3 - usbc_d;
 usbc_z = h2 + 23.0;
 mag_off_x = 10.0;
+mag_mid_x = 47.0;
 strap_w = 10.4;
 strap_lug = 3.0;
 
@@ -145,9 +146,13 @@ module base(r, h1, h2, dx, dy, wall, w_of_dx, w_of_x, w_of_h,
     // holes for mag mounts
     translate([mag_off_x, wall-0.1, h1-(4.2-FUDGE)])
       magBlank();
+    translate([mag_off_x+mag_mid_x, wall-0.1, h1-(4.2-FUDGE)])
+      magBlank();
     translate([width-mag_off_x, wall-0.1, h1-(4.2-FUDGE)])
       magBlank();
     translate([width-mag_off_x, depth-(wall-0.1), h1-(4.2-FUDGE)])
+      magBlank();
+    translate([mag_off_x+mag_mid_x, depth-(wall-0.1), h1-(4.2-FUDGE)])
       magBlank();
     translate([mag_off_x, depth-(wall-0.1), h1-(4.2-FUDGE)])
       magBlank();
@@ -178,9 +183,13 @@ union() {
   // mag mounts
   translate([mag_off_x, wall_thick-0.1, h1-4.2])
     magnetHolder(bottom_taper=true);
+  translate([mag_off_x+mag_mid_x, wall_thick-0.1, h1-4.2])
+    magnetHolder(bottom_taper=true);
   translate([width-mag_off_x, wall_thick-0.1, h1-4.2])
     magnetHolder(bottom_taper=true);
   translate([width-mag_off_x, depth-(wall_thick-0.1), h1-4.2])
+    magnetHolder(bottom_taper=true);
+  translate([mag_off_x+mag_mid_x, depth-(wall_thick-0.1), h1-4.2])
     magnetHolder(bottom_taper=true);
   translate([mag_off_x, depth-(wall_thick-0.1), h1-4.2])
     magnetHolder(bottom_taper=true);

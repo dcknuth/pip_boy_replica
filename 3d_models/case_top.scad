@@ -7,11 +7,12 @@ FUDGE = 0.01;
 wall_thick = 1.6;
 lower_wall = 1.2;
 mag_off_x = 10.0;
+mag_mid_x = 47.0;
 corner_r = 4.0;
 xsize = 110.0;
 extra_top = corner_r/2;
 hood_display_x = xsize + wall_thick*2 + (corner_r-1);
-xcase = 126.0;
+xcase = 130.0;
 ysize = 72.0;
 ycase = ysize + wall_thick*2 + (corner_r-1) + extra_top;
 echo(ycase=ycase);
@@ -65,25 +66,25 @@ union() {
           sphere(corner_r);
       }
       // Mode text lines
-      translate([hood_display_x+2, 20, (zsize+corner_r)-0.4])
-        scale([0.4, 0.4, 1])
+      translate([hood_display_x+2, 25, (zsize+corner_r)-0.4])
+        scale([0.8, 0.8, 1])
           linear_extrude(1)
             text("\u263A");
-      translate([hood_display_x-2.0, 28, (zsize+corner_r)-0.4])
-        scale([0.25, 0.25, 1])
+      translate([hood_display_x-2.0, 33, (zsize+corner_r)-0.4])
+        scale([0.35, 0.35, 1])
           linear_extrude(1)
             text("RADS");
-      translate([hood_display_x-1.0, 36, (zsize+corner_r)-0.4])
-        scale([0.25, 0.25, 1])
+      translate([hood_display_x-0.3, 39, (zsize+corner_r)-0.4])
+        scale([0.35, 0.35, 1])
           linear_extrude(1)
             text("STAT");
-      translate([hood_display_x-2.0, 44, (zsize+corner_r)-0.4])
-        scale([0.033, 0.033, 1])
+      translate([hood_display_x-2.6, 49, (zsize+corner_r)-0.4])
+        scale([0.05, 0.05, 1])
           rotate([0, 0, -45])
             linear_extrude(1)
               import("flashlight.svg", convexity=10);
-      translate([hood_display_x-0.2, 50, (zsize+corner_r)-0.4])
-        scale([0.031, 0.031, 1])
+      translate([hood_display_x+2.5, 55, (zsize+corner_r)-0.4])
+        scale([0.04, 0.04, 1])
           linear_extrude(1)
             import("speaker.svg", convexity=10);
     }
@@ -131,27 +132,37 @@ union() {
                   zsize/2+corner_r/2])
         cylinder(h=screenz*10, d=screw_holeD, center=true);
       // holes for mag mounts
-      translate([mag_off_x, wall_thick+lower_wall, -FUDGE])
+      translate([mag_off_x, wall_thick, -FUDGE])
         magBlank();
-      translate([xcase-mag_off_x, wall_thick+lower_wall, -FUDGE])
+      translate([mag_off_x+mag_mid_x, wall_thick, -FUDGE])
         magBlank();
-      translate([xcase-mag_off_x, ycase-(wall_thick+lower_wall), -FUDGE])
+      translate([xcase-mag_off_x, wall_thick, -FUDGE])
         magBlank();
-      translate([mag_off_x, ycase-(wall_thick+lower_wall), -FUDGE])
+      translate([xcase-mag_off_x, ycase-wall_thick, -FUDGE])
+        magBlank();
+      translate([mag_off_x+mag_mid_x, ycase-wall_thick, -FUDGE])
+        magBlank();
+      translate([mag_off_x, ycase-wall_thick, -FUDGE])
         magBlank();  
     }
   }
   // mag mounts
-  translate([mag_off_x, wall_thick+lower_wall, 4.2])
+  translate([mag_off_x, wall_thick, 4.2])
     rotate([180, 0, 0])
       magnetHolder();
-  translate([xcase-mag_off_x, wall_thick+lower_wall, 4.2])
+  translate([mag_off_x+mag_mid_x, wall_thick, 4.2])
     rotate([180, 0, 0])
       magnetHolder();
-  translate([xcase-mag_off_x, ycase-(wall_thick+lower_wall), 4.2])
+  translate([xcase-mag_off_x, wall_thick, 4.2])
     rotate([180, 0, 0])
       magnetHolder();
-  translate([mag_off_x, ycase-(wall_thick+lower_wall), 4.2])
+  translate([xcase-mag_off_x, ycase-wall_thick, 4.2])
+    rotate([180, 0, 0])
+      magnetHolder();
+  translate([mag_off_x+mag_mid_x, ycase-wall_thick, 4.2])
+    rotate([180, 0, 0])
+      magnetHolder();
+  translate([mag_off_x, ycase-wall_thick, 4.2])
     rotate([180, 0, 0])
       magnetHolder();
 }
