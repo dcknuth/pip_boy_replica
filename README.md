@@ -1,10 +1,15 @@
 # Pip-Boy Replica
 Making a Pip-Boy replica. Will not exactly match any given model from the game or episodes, but is inspired by them
 
+[Video of the final product](https://youtu.be/MKkzPV8Xsxo)
+![Showing Fallout Boy mode](fallout01.png)
+![View of the front with flashlight mode on](fallout02.png)
+![View of the top showing status mode](fallout03.png)
+
 ## Function List
 These are the functions that we will try to add to our Pip-Boy with a bit of discussion on how and why
 * Fallout Boy - Just a picture of the "thumbs up" fallout boy image. Recognizable from a distance and was a big plot item for the Amazon Fallout series in addition to being common in the games
-* Geiger Counter - A real, working one based on data passed from a [MightyOhm Geiger Counter DIY kit](https://mightyohm.com/blog/products/geiger-counter/). I think I bought mine through [AdaFruit](https://www.adafruit.com/product/483) because they are a solid vendor
+* Geiger Counter - A real, working one based on data passed from a [MightyOhm Geiger Counter DIY kit](https://mightyohm.com/blog/products/geiger-counter/). I think I bought mine through [AdaFruit](https://www.adafruit.com/product/483)
 * Status Indicator - Just a static screen borrowed from the Fallout 3 video game
 * Flashlight - Will just turn on the screen to white and the front-facing LED of this particular board to ~90%. Might even be useful Halloween night?
 * Radio - Will play "I Don't Want to Set the World on Fire", which was the intro song to the Fallout 3 video game and was in the Amazon series. The screen will show a static radio mode image from the game
